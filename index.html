@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
         <!-- Latest compiled and minified CSS -->
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- jQuery library -->
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
         <!-- Popper JS -->
@@ -46,12 +46,39 @@
             var GuessesSoFar = 0;     // THIS VARIABLE CHECK TO SEE IF THE PLAYER'S # OF GUESS IS  = 9, FOR RESET -->
         
         
-            document.getElementById("playerSelects-text").innerHTML = "Hello JavaScript";
+            // document.getElementById("playerSelects-text").innerHTML><;
+            
+           // Generates a random letter and store it as the "Computer's letter"
+            var computerLetter = "";
+            var alphabet = "abcdefghijklmnopqrstuvwxyz";
+            function getRandomLetter() {
+                  return alphabet[Math.floor(Math.random() * alphabet.length)];
+            }
+            var randomLetter;
 
-            // When user presses and releases a key, this function places the key pushed into "players_guess
+            while (computerLetter.length < 1) {
+                    randomLetter = getRandomLetter();
+                         computerLetter += randomLetter;
+            } 
+            console.log(computerLetter);
+
+
+/*
+           var random = Math.floor(Math.random() * 1000) + 1;
+           console.log(random);
+           // ... and then dump the random number into our random-number div.
+           var compGuess = "";
+           var alphabet = "abcdefghijklmnopqrstuvwxyz";
+           var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+           var randomLetter = getRandomLetter;  
+           console.log(compGuess);             //used as a debugging tool. commented out for Prod.
+ */            
+          // When user presses and releases a key, this function places the key pushed into "players_guess
             document.onkeyup = function(event) {
                 var players_guess = event.key;
-                console.log(players_guess);
+                console.log(players_guess);   //used as a debugging tool. commented out for Production.
+
+
             };
            
         </script>
