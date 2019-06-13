@@ -10,7 +10,7 @@
               the device).  The initial-scale=1 part sets the initial zoom
               level when the page is first loaded by the browser  -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="reset.css" />
+        <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
         <!-- Latest compiled and minified CSS -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
         <!-- jQuery library -->
@@ -23,52 +23,50 @@
              However, if you just use the CSS part of Bootstrap, you don't need the link below.-->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 <html>
-<body>
+    <body>
+        <h1>The Psychic Game</h1>
+        <h3>Guess what letter I'm thinking of</h3>
 
-    <!----- THIS SECTION IS DECLARING ALL GLOBAL VARIABLES -->
-    var numbWins = 0;
-    var numbLosses = 0;
-    var NumbGuessesLeft = 9;   <!-- THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
-    var GuessesSoFar = 0;      <!-- THIS VARIABLE CHECK TO SEE IF THE PLAYER'S # OF GUESS IS  = 9, FOR RESET -->
+        <div>   <!--- The below "id's" are used to write text and count for the variables.  -->
+                <p id="playerSelects-text"></p>
+                <p id="computerSelects-text"></p>
+                <p id="wins-text"></p>
+                <p id="losses-text"></p>
+                <p id="ties-text"></p>
+            </div>
 
 
+        <script> 
+            // THIS SECTION IS DECLARING ALL GLOBAL VARIABLES             
+            var numbWins = 0;
+            var numbLosses = 0;
+            var NumbGuessesLeft = 9;   //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
+            var GuessesSoFar = 0;     // THIS VARIABLE CHECK TO SEE IF THE PLAYER'S # OF GUESS IS  = 9, FOR RESET -->
+        
+        
+            document.getElementById("playerSelects-text").innerHTML = "Hello JavaScript";
 
-    <div>
-        <p id="playerSelects-text"></p>
-        <p id="computerSelects-text"></p>
-        <p id="wins-text"></p>
-        <p id="losses-text"></p>
-        <p id="ties-text"></p>
-      </div>
+            // When user presses and releases a key, this function places the key pushed into "players_guess
+            document.onkeyup = function(event) {
+                var players_guess = event.key;
+                console.log(players_guess);
+            };
+           
+        </script>
 
-     <!--- 
-<h1>The Psychic Game</h1>
-<h3>Guess what letter I'm thinking of</h3>
-<h3>Wins:</h3>
-<h3>Losses:</h3>
-<h3>Guesses left:</h3>
-<h3>Your guesses so far:</h3>
+           
+<!--- 
+       
 
---->
-
-        <script src="./assets/javascript/game.js"></script>
-        <!--- variables that hold references to the places in the HTML where we want to display things.
-            var directionsText = document.getElementById("directions-text");  
         -->
-        var directionsText = document.getElementById("userchoice-text");
 
-        </script> 
 
-<!--- variables to hold the number of wins, losses, Guesses and number of Guesses Left. They start at 0 
-      except for GuessesSoFar, which starts at 9 and is decrement by 1 in each round until player guesses 
-      the right letter or the round is over, then it is reset to 9 again-->
+    
 
 
 
 
-
-
-</body>
+    </body>
 </html>
