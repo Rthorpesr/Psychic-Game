@@ -42,15 +42,18 @@
             // THIS SECTION IS DECLARING ALL GLOBAL VARIABLES             
             var numbWins = 0;
             var numbLosses = 0;
-            var NumbGuessesLeft = 9;   //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
+            var NumbGuessesLeft ;    //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
             var GuessesSoFar = 0;     // need an array
+            var initAllowedGuesses = 9;
            // Generates a random letter and store it as the "Computer's letter"
     
            // Show the start of the game with all counts initilized.
            document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
            document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses;
-           document.getElementById("guessesleft").innerHTML = "Guesses Left: " + NumbGuessesLeft;
+           document.getElementById("guessesleft").innerHTML = "Guesses Left: " + initAllowedGuesses;
            document.getElementById("GuessesSoFar").innerHTML = "Your Guesses so far: ";
+
+           NumbGuessesLeft = initAllowedGuesses;
 
             var computerLetter = "";
             var alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -61,13 +64,17 @@
             
             var randomLetter;
 
-            while (computerLetter.length < 1) {
-                    randomLetter = getRandomLetter();
-                         computerLetter = randomLetter;
-            } 
+            while (computerLetter.length < 1)
+                  {
+                      randomLetter = getRandomLetter();
+                      computerLetter = randomLetter;
+                  } 
+
             console.log(computerLetter);
           
-          // When user presses and releases a key, this function places the key pushed into "players_guess
+          /* When user presses and releases a key, this function places 
+             the key pushed into "players_guess array.
+          */
             
             document.onkeyup = function(event) {
                 var players_guess = event.key;
@@ -76,7 +83,10 @@
 
                     if (players_guess === computerLetter) 
                        {
-                         numbWins = numbWins + 1;                     
+                         numbWins++; 
+                         numbLosses = numbLosses;      
+                         NumbGuessesLeft = initAllowedGuesses;
+                                 
                          console.log("number of wins: " + numbWins); 
                        } 
                     else 
@@ -103,13 +113,15 @@
                         console.log("number of losses: " + numbLosses); 
                         GuessesSoFar = NumbGuessesLeft; 
                         console.log("no more guesses left: " + GuessesSoFar);
-                        document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
-                        document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses;
-                        document.getElementById("guessesleft").innerHTML = "Guesses Left" + NumbGuessesLeft;
-                        document.getElementById("GuessesSoFar").innerHTML = "GuessesSoFar"  ;
+
+                      }
+
+                      document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
+                      document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses; 
+                      document.getElementById("guessesleft").innerHTML = "Guesses Left: " + NumbGuessesLeft;
+                      document.getElementById("GuessesSoFar").innerHTML = "Your Guesses so far: "  ;
 
                         // GuessesSoFar = 0; 
-                      }
               
             };
 
