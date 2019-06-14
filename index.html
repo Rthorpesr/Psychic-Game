@@ -39,12 +39,16 @@
 
         
         <script> 
-            // THIS SECTION IS DECLARING ALL GLOBAL VARIABLES             
+            // THIS SECTION IS DECLARING ALL GLOBAL VARIABLES 
+
+            console.log("Starting at the top of the program");  
+
             var numbWins = 0;
             var numbLosses = 0;
             var NumbGuessesLeft ;    //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
-            var GuessesSoFar = 0;     // need an array
+            var GuessesSoFar = [];     // an array to hold letters pressed by player
             var initAllowedGuesses = 9;
+            var gameOn = 1;
            // Generates a random letter and store it as the "Computer's letter"
     
            // Show the start of the game with all counts initilized.
@@ -55,75 +59,65 @@
 
            NumbGuessesLeft = initAllowedGuesses;
 
-            var computerLetter = "";
+            
             var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-            function getRandomLetter() {
-                  return alphabet[Math.floor(Math.random() * alphabet.length)];
-            }
-            
+            console.log("Executing the Random letter Gen");  
+            function getRandomLetter()
+                    {
+                        return alphabet[Math.floor(Math.random() * alphabet.length)];
+                    }
+                                
             var randomLetter;
-
-            while (computerLetter.length < 1)
-                  {
-                      randomLetter = getRandomLetter();
-                      computerLetter = randomLetter;
-                  } 
-
-            console.log(computerLetter);
-          
-          /* When user presses and releases a key, this function places 
-             the key pushed into "players_guess array.
-          */
+            computerLetter = randomLetter = getRandomLetter();           
+  
+            console.log("THORPE -computer's letter: " + computerLetter);          
             
-            document.onkeyup = function(event) {
-                var players_guess = event.key;
-                console.log(players_guess);   //used as a debugging tool. commented out for Production.
-                       
-
-                    if (players_guess === computerLetter) 
+            console.log("Executing on key up");  
+            document.onkeyup = function(event) 
+                {
+                     var players_guess = event.key;  
+                     var wins =  numbWins++;   
+                      
+                    console.log("jokerssssssssssssssssssss");
+                     if (players_guess === computerLetter) 
                        {
-                         numbWins++; 
-                         numbLosses = numbLosses;      
+                         console.log("inside player letter is equal to computer letter");  
+                         console.log("Computer letter = " + computerLetter);    
+                         console.log("Player's letter = " + players_guess); 
+                         console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");  
+                         numbWins++;
                          NumbGuessesLeft = initAllowedGuesses;
-                                 
-                         console.log("number of wins: " + numbWins); 
+                         GuessesSoFar = [];                       
                        } 
-                    else 
+               /*        
+                     if (players_guess !== computerLetter) 
                        {
-                         (players_guess !== computerLetter) 
+                          console.log("inside player letter not equal to computer letter");  
+                          console.log("Computer letter = " + computerLetter);    
+                          console.log("Player's letter = " + players_guess);  
+                          console.log("inside player letter is equal to computer letter");  
+                          console.log("Computer letter = " + computerLetter);    
+                          console.log("Player's letter = " + players_guess); 
+                          GuessesSoFar.push(players_guess );
+                        //   document.getElementById("GuessesSoFar").innerHTML = "Your Guesses so far: " + GuessesSoFar ;
                           numbLosses++;
-                          console.log("number of losses: " + numbLosses);
-                          console.log("number of guesses allowed in a round: " + NumbGuessesLeft);
-                        }                     
-                    
-                    if (GuessesSoFar === NumbGuessesLeft)  
-                       {
-                         console.log("number of guesses " + NumbGuessesLeft);
-                         console.log("no more guesses left: " + GuessesSoFar);
+                          NumbGuessesLeft = initAllowedGuesses;
+                         
                        }
-                    else
-                        {
-                          GuessesSoFar++;
-                          console.log("number of GuessesSoFar: " + GuessesSoFar);   
-                        }
-                   if (GuessesSoFar === NumbGuessesLeft)
-                      { 
-                        console.log("number of wins: " + numbWins);  
-                        console.log("number of losses: " + numbLosses); 
-                        GuessesSoFar = NumbGuessesLeft; 
-                        console.log("no more guesses left: " + GuessesSoFar);
-
-                      }
-
-                      document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
+                   */         
+                      console.log("out of the if else statement");
+                      console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+                      console.log("Computer letter = " + computerLetter);    
+                      console.log("Player's letter = " + players_guess); 
+                      console.log ("right before writing totals to the screen");
+                      document.getElementById("wins-text").innerHTML = "Wins: " + wins;
                       document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses; 
+                      console.log("inside the document get elem statements, the computer ltr is: " + computerLetter);
                       document.getElementById("guessesleft").innerHTML = "Guesses Left: " + NumbGuessesLeft;
-                      document.getElementById("GuessesSoFar").innerHTML = "Your Guesses so far: "  ;
-
-                        // GuessesSoFar = 0; 
-              
-            };
+                      console.log("-------------------------------------------------");
+                  }
+          
 
         </script>
     </body>
