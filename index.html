@@ -29,6 +29,7 @@
         <h1>The Psychic Game</h1>
         <h3>Guess what letter I'm thinking of</h3>
 
+
         <div>   <!--- The below "id's" are used to write text and count for the variables.  -->
                 <p id="playerSelects-text"></p>
                 <p id="computerSelects-text"></p>
@@ -44,43 +45,64 @@
             var numbLosses = 0;
             var NumbGuessesLeft = 9;   //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
             var GuessesSoFar = 0;     // THIS VARIABLE CHECK TO SEE IF THE PLAYER'S # OF GUESS IS  = 9, FOR RESET -->
-        
-        
-            // document.getElementById("playerSelects-text").innerHTML><;
             
            // Generates a random letter and store it as the "Computer's letter"
             var computerLetter = "";
             var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
             function getRandomLetter() {
                   return alphabet[Math.floor(Math.random() * alphabet.length)];
             }
+            
             var randomLetter;
 
             while (computerLetter.length < 1) {
                     randomLetter = getRandomLetter();
-                         computerLetter += randomLetter;
+                         computerLetter = randomLetter;
             } 
             console.log(computerLetter);
-
-
-/*
-           var random = Math.floor(Math.random() * 1000) + 1;
-           console.log(random);
-           // ... and then dump the random number into our random-number div.
-           var compGuess = "";
-           var alphabet = "abcdefghijklmnopqrstuvwxyz";
-           var getRandomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-           var randomLetter = getRandomLetter;  
-           console.log(compGuess);             //used as a debugging tool. commented out for Prod.
- */            
+          
           // When user presses and releases a key, this function places the key pushed into "players_guess
+            
             document.onkeyup = function(event) {
                 var players_guess = event.key;
                 console.log(players_guess);   //used as a debugging tool. commented out for Production.
+                       
 
-
+                    if (players_guess === computerLetter) 
+                       {
+                         numbWins = numbWins + 1;                     
+                         console.log("number of wins: " + numbWins); 
+                       } 
+                    else 
+                       {
+                         (players_guess !== computerLetter) 
+                          numbLosses++;
+                          console.log("number of losses: " + numbLosses);
+                          console.log("number of guesses allowed in a round: " + NumbGuessesLeft);
+                        }                     
+                    
+                    if (GuessesSoFar === NumbGuessesLeft)  
+                       {
+                         console.log("number of guesses " + NumbGuessesLeft)
+                         console.log("no more guesses left: " + GuessesSoFar)
+                       }
+                    else
+                        {
+                          GuessesSoFar++;
+                          console.log("number of GuessesSoFar: " + GuessesSoFar);   
+                        }
+                   if (GuessesSoFar === NumbGuessesLeft)
+                      {
+                        GuessesSoFar = 0;  
+                        console.log("number of wins: " + numbWins);  
+                        console.log("number of losses: " + numbLosses); 
+                        GuessesSoFar = NumbGuessesLeft; 
+                        console.log("no more guesses left: " + GuessesSoFar);
+                      }
+              
             };
-           
+
         </script>
 
            
