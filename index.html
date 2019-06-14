@@ -31,22 +31,27 @@
 
 
         <div>   <!--- The below "id's" are used to write text and count for the variables.  -->
-                <p id="playerSelects-text"></p>
-                <p id="computerSelects-text"></p>
-                <p id="wins-text"></p>
-                <p id="losses-text"></p>
-                <p id="ties-text"></p>
-            </div>
+            <p id="wins-text">Wins:  </p>
+            <p id="losses-text">Losses:</p>    
+            <p id="guessesleft">Guesses Left:</p>
+            <p id="GuessesSoFar">Your Guesses so far:</p>
+        </div>
 
-
+        
         <script> 
             // THIS SECTION IS DECLARING ALL GLOBAL VARIABLES             
             var numbWins = 0;
             var numbLosses = 0;
             var NumbGuessesLeft = 9;   //THIS VARIABLE RESET AFTER 9 ATTEMPT WITHOUT A WIN, OR RIGHT AFTER A WIN  -->
-            var GuessesSoFar = 0;     // THIS VARIABLE CHECK TO SEE IF THE PLAYER'S # OF GUESS IS  = 9, FOR RESET -->
-            
+            var GuessesSoFar = 0;     // need an array
            // Generates a random letter and store it as the "Computer's letter"
+    
+           // Show the start of the game with all counts initilized.
+           document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
+           document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses;
+           document.getElementById("guessesleft").innerHTML = "Guesses Left: " + NumbGuessesLeft;
+           document.getElementById("GuessesSoFar").innerHTML = "Your Guesses so far: ";
+
             var computerLetter = "";
             var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -84,8 +89,8 @@
                     
                     if (GuessesSoFar === NumbGuessesLeft)  
                        {
-                         console.log("number of guesses " + NumbGuessesLeft)
-                         console.log("no more guesses left: " + GuessesSoFar)
+                         console.log("number of guesses " + NumbGuessesLeft);
+                         console.log("no more guesses left: " + GuessesSoFar);
                        }
                     else
                         {
@@ -93,29 +98,21 @@
                           console.log("number of GuessesSoFar: " + GuessesSoFar);   
                         }
                    if (GuessesSoFar === NumbGuessesLeft)
-                      {
-                        GuessesSoFar = 0;  
+                      { 
                         console.log("number of wins: " + numbWins);  
                         console.log("number of losses: " + numbLosses); 
                         GuessesSoFar = NumbGuessesLeft; 
                         console.log("no more guesses left: " + GuessesSoFar);
+                        document.getElementById("wins-text").innerHTML = "Wins: " + numbWins;
+                        document.getElementById("losses-text").innerHTML = "Losses: " + numbLosses;
+                        document.getElementById("guessesleft").innerHTML = "Guesses Left" + NumbGuessesLeft;
+                        document.getElementById("GuessesSoFar").innerHTML = "GuessesSoFar"  ;
+
+                        // GuessesSoFar = 0; 
                       }
               
             };
 
         </script>
-
-           
-<!--- 
-       
-
-        -->
-
-
-    
-
-
-
-
     </body>
 </html>
